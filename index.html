@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/db8d21434d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container-sm">
+        <div class="app-body">
+            <nav class="navbar top navbar">
+                <div class=searchBar>
+                    <form id=search-button class="form-inline">
+                        <button id=currentButton class="btn btn-outline-light my-2 my-sm-0" type="submit"><i
+                                class="fas fa-map-marker-alt"></i></button>
+                        <button id=search class="btn btn-outline-light my-2 my-xs-0" type="submit"><i
+                                class="fas fa-search"></i></span></button>
+                        <input id=search-text-input class="form-control mr-sm-2" type="search"
+                            placeholder="Search for city..." aria-label="Search">
+                        <button id=celcius-button class="btn btn-outline-light my-2 my-xs-0"
+                            type="submit">°C</span></button>
+                        <button id=fahrenheit-button class="btn btn-outline-light my-2 my-xs-0"
+                            type="submit">°F</i></span></button>
+                    </form>
+                </div>
+            </nav>
+            <div class="row">
+                <div class="col-6" id=cityTime>
+                    <h1 id=city><strong>Sevilla</strong></h1>
+                    <p id=currentTime>Tue, 30 Sept 2020 - 14:43H</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <i id=topWeatherIcon class="f6c4 fas fa-cloud-sun"></i>
+                </div>
+                <div class="col-4" id=tempDescription>
+                    <h1 class="temp-current" id=current-temp>31°<small>c</small></h1>
+                    <p id=description> Cloudy </p>
+                </div>
+                <div class="col-4">
+                    <ul class="details">
+                        <li id=humidity>Humidity: 65%</li>
+                        <li id=windSpeed>Wind: 12 mph</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="daily-forecast row">
+                <div class="col-12">
+                    <h6><strong> 5 day forecast</strong></h6>
+                </div>
+                <div class="day col-2">
+                    <p><strong>Wed</strong></p>
+                    <i class="f185 far fa-sun"></i>
+                    <p>17<strong>/25°c</strong></p>
+                </div>
+                <div class="day col-2">
+                    <p><strong>Thu</strong></p>
+                    <i class="f185 far fa-sun"></i>
+                    <p>17<strong>/25°c</strong></p>
+                </div>
+                <div class="day col-2">
+                    <p><strong>Fri</strong></p>
+                    <i class="f185 far fa-sun"></i>
+                    <p>17<strong>/25°c</strong></p>
+                </div>
+                <div class="day col-2">
+                    <p><strong>Sat</strong></p>
+                    <i class="f185 far fa-sun"></i>
+                    <p>17<strong>/25°c</strong></p>
+                </div>
+                <div class="day col-2">
+                    <p><strong>Sun</strong></p>
+                    <i class="f185 far fa-sun"></i>
+                    <p>17<strong>/25°c</strong></p>
+                </div>
+            </div>
+        </div>
+        <footer>Coded by Rosaly Wiegmans</footer>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

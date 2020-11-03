@@ -1,0 +1,110 @@
+.app-body {
+  box-sizing: border-box;
+  background: linear-gradient(#9a87a5, #e0c4e5, #cdc9d3, #d0ccd7);
+  border: 1px solid #d0ccd7;
+  color: whitesmoke;
+  font-family: "Bebas Neue", cursive;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  width: 500px;
+  height: 650px;
+}
+.navbar {
+  justify-content: space-evenly;
+}
+#cityTime {
+  display: block;
+  padding: 0px;
+  margin: 0 auto;
+}
+h1 {
+  font-family: "Bebas Neue", cursive;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 48px;
+  padding-top: 0px;
+}
+#currentTime {
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  text-align: center;
+}
+#tempDescription {
+  display: block;
+  text-align: center;
+}
+#description {
+  font-size: 20px;
+  font-family: "Bebas Neue", cursive;
+}
+#topWeatherIcon {
+  position: relative;
+  top: 70px;
+  left: 50px;
+  font-size: 125px;
+}
+.temp-current {
+  position: relative;
+  top: 20px;
+  font-size: 55px;
+}
+.details {
+  position: relative;
+  right: 60px;
+  top: 160px;
+}
+ul {
+  list-style: none;
+  font-family: "Bebas Neue", cursive;
+}
+li {
+  padding: 0px;
+}
+#humidity {
+  font-family: "Bebas Neue", cursive;
+  font-size: 15px;
+}
+#windSpeed {
+  font-family: "Bebas Neue", cursive;
+  font-size: 15px;
+}
+.f185 {
+  display: block;
+  margin: 5px auto;
+  padding-bottom: 10px;
+  font-size: 50px;
+  color: yellow;
+}
+h6 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  text-align: left;
+  padding-bottom: 10px;
+}
+.daily-forecast {
+  display: inline-flexbox;
+  justify-content: space-evenly;
+  padding-top: 105px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+}
+.day {
+  font-size: 18px;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(145, 133, 141, 0.5);
+}
+
+footer {
+  text-align: center;
+  font-family: "Satisfy", cursive;
+}
