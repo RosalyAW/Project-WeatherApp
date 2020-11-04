@@ -25,7 +25,7 @@ let hourNow = timeNow.getHours();
 let minutesNow = timeNow.getMinutes();
 
 let date = document.querySelector("#currentTime");
-date.innerHTML = `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}: ${minutesNow}H `;
+date.innerHTML = `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}:${minutesNow}H `;
 
 function celciusButton(event) {
   event.preventDefault();
@@ -56,7 +56,7 @@ function showConditionsCity(response) {
     response.data.weather[0].description;
   document.querySelector(
     "#windSpeed"
-  ).innerHTML = `WindSpeed:${response.data.wind.speed}mph`;
+  ).innerHTML = `WindSpeed:${Math.round(response.data.wind.speed)}Km/h`;
 }
 
 function showCity(city) {
