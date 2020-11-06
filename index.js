@@ -22,7 +22,13 @@ let dayNow = days[timeNow.getDay()];
 let monthNow = months[timeNow.getMonth()];
 let dateNow = timeNow.getDate();
 let hourNow = timeNow.getHours();
+if (hourNow < 10) {
+    hourNow = `0${hourNow}`;
+}
 let minutesNow = timeNow.getMinutes();
+if (minutesNow < 10) {
+    minutesNow = `0${minutes}`;
+}
 
 let date = document.querySelector("#currentTime");
 date.innerHTML = `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}:${minutesNow}H `;
