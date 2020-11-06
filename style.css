@@ -57,11 +57,11 @@ footer {
   text-transform: capitalize;
   font-size: 20px;
 }
-#topWeatherIcon {
+#topIcon {
   position: relative;
-  top: 70px;
-  left: 50px;
-  font-size: 115px;
+  top: 60px;
+  left: 20px;
+  width: 150px;
 }
 .temp-current {
   position: relative;

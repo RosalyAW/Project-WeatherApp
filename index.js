@@ -27,7 +27,7 @@ if (hourNow < 10) {
 }
 let minutesNow = timeNow.getMinutes();
 if (minutesNow < 10) {
-    minutesNow = `0${minutes}`;
+    minutesNow = `0${minutesNow}`;
 }
 
 let date = document.querySelector("#currentTime");
@@ -51,18 +51,20 @@ fahrenheitTemp.addEventListener("click", fahrenheitButton);
 
 // weather conditions by city
 function showConditionsCity(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = `${Math.round(
-    response.data.main.temp
-  )}°c`;
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `Humidity:${response.data.main.humidity}%`;
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
-  document.querySelector(
-    "#windSpeed"
-  ).innerHTML = `WindSpeed:${Math.round(response.data.wind.speed)}Km/h`;
+    document.querySelector("#city").innerHTML = response.data.name;
+    document.querySelector("#current-temp").innerHTML = `${Math.round(
+        response.data.main.temp
+    )}°c`;
+    document.querySelector(
+        "#humidity"
+    ).innerHTML = `Humidity:${response.data.main.humidity}%`;
+    document.querySelector("#description").innerHTML =
+        response.data.weather[0].description;
+    document.querySelector(
+        "#windSpeed"
+    ).innerHTML = `WindSpeed:${Math.round(response.data.wind.speed)}Km/h`;
+    document.querySelector("#topIcon").setAttribute("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    topIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showCity(city) {
