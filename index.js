@@ -33,22 +33,6 @@ if (minutesNow < 10) {
 let date = document.querySelector("#currentTime");
 date.innerHTML = `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}:${minutesNow}H `;
 
-function celciusButton(event) {
-  event.preventDefault();
-  let clickCelcius = document.querySelector("#current-temp");
-  clickCelcius.innerHTML = "32°c";
-}
-let celsiusTemp = document.querySelector("#celcius-button");
-celsiusTemp.addEventListener("click", celciusButton);
-
-function fahrenheitButton(event) {
-  event.preventDefault();
-  let clickfahrenheit = document.querySelector("#current-temp");
-  clickfahrenheit.innerHTML = "90°f";
-}
-let fahrenheitTemp = document.querySelector("#fahrenheit-button");
-fahrenheitTemp.addEventListener("click", fahrenheitButton);
-
 // weather conditions by city
 function showConditionsCity(response) {
     document.querySelector("#city").innerHTML = response.data.name;
@@ -65,6 +49,8 @@ function showConditionsCity(response) {
     ).innerHTML = `WindSpeed:${Math.round(response.data.wind.speed)}Km/h`;
     document.querySelector("#topIcon").setAttribute("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     topIcon.setAttribute("alt", response.data.weather[0].description);
+    
+    celciusTemperature = Math.round(response.data.main.temp);
 }
 
 function showCity(city) {
@@ -91,6 +77,27 @@ function getCurrentPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(findCurrentPosition);
 }
+//convertion Buttons from Celcius to Fahrenheit
+
+function celciusButton(event) {
+    event.preventDefault();
+  let clickCelcius = document.querySelector("#current-temp");
+    clickCelcius.innerHTML =`${Math.round(celciusTemperature)}°C`;
+}
+function fahrenheitButton(event) {
+    event.preventDefault();
+  let clickFahrenheit = document.querySelector("#current-temp");
+    let fahrenheitTemp = `${(celciusTemperature*9)/5+32}`;
+    clickFahrenheit.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let celciusTemperature = null;
+
+let celsiusTemp = document.querySelector("#celcius-button");
+celsiusTemp.addEventListener("click", celciusButton);
+
+let fahrenheitTemp = document.querySelector("#fahrenheit-button");
+fahrenheitTemp.addEventListener("click", fahrenheitButton);
 
 let searchForm = document.querySelector(".searchBar");
 searchForm.addEventListener("submit", searchButtonInput);
