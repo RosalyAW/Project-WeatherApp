@@ -1,40 +1,53 @@
 // Change date time while reloading page
-let timeNow = new Date();
+function formatDate(timestamp) {
+    let date = new Date(timestamp);
+     let hourNow = date.getHours();
+    if (hourNow < 10) {
+        hourNow = `0${hourNow}`;
+    }
+    let minutesNow = date.getMinutes();
+    if (minutesNow < 10) {
+        minutesNow = `0${minutesNow}`;
+    }
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
+    let yearNow = date.getFullYear();
+    let dayNow = days[date.getDay()];
+    let monthNow = months[date.getMonth()];
+    let dateNow = date.getDate();
 
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec"
-];
-
-let yearNow = timeNow.getFullYear();
-let dayNow = days[timeNow.getDay()];
-let monthNow = months[timeNow.getMonth()];
-let dateNow = timeNow.getDate();
-let hourNow = timeNow.getHours();
-if (hourNow < 10) {
-    hourNow = `0${hourNow}`;
+    return `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}:${minutesNow}H`;
 }
-let minutesNow = timeNow.getMinutes();
-if (minutesNow < 10) {
-    minutesNow = `0${minutesNow}`;
-}
 
-let date = document.querySelector("#currentTime");
-date.innerHTML = `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}:${minutesNow}H `;
+function formatHours(timestamp) {
+    let date = new Date(timestamp);
+  let hourNow = date.getHours();
+    if (hourNow < 10) {
+        hourNow = `0${hourNow}`;
+    }
+    let minutesNow = date.getMinutes();
+    if (minutesNow < 10) {
+        minutesNow = `0${minutesNow}`;
+    }
+    return ` ${hourNow}: ${minutesNow}`;
+}
 
 // weather conditions by city
 function showConditionsCity(response) {
+    let dateFormat = document.querySelector("#currentTime");
     document.querySelector("#city").innerHTML = response.data.name;
     document.querySelector("#current-temp").innerHTML = `${Math.round(
         response.data.main.temp
@@ -49,14 +62,37 @@ function showConditionsCity(response) {
     ).innerHTML = `WindSpeed:${Math.round(response.data.wind.speed)}Km/h`;
     document.querySelector("#topIcon").setAttribute("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     topIcon.setAttribute("alt", response.data.weather[0].description);
+
+    dateFormat.innerHTML = formatDate(currentTime);
+    celciusTemperature = Math.round(response.data.dt * 1000);
+}
+
+function showDailyForecast(response) {
+    let forecastElement = document.querySelector("#forecast");
+    forecastElement.innerHTML = null;
+    let forecast = null;
     
-    celciusTemperature = Math.round(response.data.main.temp);
+
+    for (let index = 0; index < 5; index++) {
+        forecast = response.data.list[index];
+        console.log(forecast);
+        forecastElement.innerHTML += 
+        `<div id=daily class="day col-2">
+          <p id= timeDaily><strong>${formatHours(forecast.dt * 1000)}h</strong></p>
+             <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon
+            }@2x.png"/>
+         <p>${Math.round(forecast.main.temp_min)}<strong>/${Math.round(forecast.main.temp_max)}°</strong></p>
+            </div>`;
+    }
 }
 
 function showCity(city) {
   let apiKey = "5c57e0689379640fccf1044191d9a54c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showConditionsCity);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(showConditionsCity);
+
+    apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(showDailyForecast);
 }
 
 function searchButtonInput(event) {
