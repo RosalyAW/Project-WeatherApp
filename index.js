@@ -63,8 +63,8 @@ function showConditionsCity(response) {
     document.querySelector("#topIcon").setAttribute("src",`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     topIcon.setAttribute("alt", response.data.weather[0].description);
 
-    dateFormat.innerHTML = formatDate(currentTime);
-    celciusTemperature = Math.round(response.data.dt * 1000);
+    dateFormat.innerHTML = formatDate(response.data.dt * 1000);
+  celciusTemperature = Math.round(response.data.main.temp);
 }
 
 function showDailyForecast(response) {
@@ -123,8 +123,8 @@ function celciusButton(event) {
 function fahrenheitButton(event) {
     event.preventDefault();
   let clickFahrenheit = document.querySelector("#current-temp");
-    let fahrenheitTemp = `${(celciusTemperature*9)/5+32}`;
-    clickFahrenheit.innerHTML = Math.round(fahrenheitTemp);
+    let fahrenheitTemp = (celciusTemperature*9)/5+32;
+    clickFahrenheit.innerHTML =`${ Math.round(fahrenheitTemp)}°F`;
 }
 
 let celciusTemperature = null;
