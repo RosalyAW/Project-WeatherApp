@@ -76,13 +76,10 @@ footer {
 }
 .details {
   position: relative;
-  right: 60px;
-  top: 150px;
-}
-#humidity {
-  font-size: 15px;
-}
-#windSpeed {
+  padding-left: 0px;
+  padding-right: 0px;
+  top: 140px;
+  line-height: 1em;
   font-size: 15px;
 }
 
