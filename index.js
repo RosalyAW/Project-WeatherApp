@@ -45,6 +45,12 @@ function showConditionsCity(response) {
     document.querySelector("#current-temp").innerHTML = `${Math.round(
         response.data.main.temp
     )}°c`;
+     document.querySelector(
+        "#sunrise"
+    ).innerHTML = `Sunrise:${formatHours(response.data.sys.sunrise * 1000)}h`;
+    document.querySelector(
+        "#sunset"
+    ).innerHTML = `Sunset:${formatHours(response.data.sys.sunset * 1000)}h`;
     document.querySelector(
         "#humidity"
     ).innerHTML = `Humidity:${response.data.main.humidity}%`;
