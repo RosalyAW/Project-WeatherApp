@@ -1,14 +1,7 @@
 // Change date time while reloading page
 function formatDate(timestamp) {
     let date = new Date(timestamp);
-     let hourNow = date.getHours();
-    if (hourNow < 10) {
-        hourNow = `0${hourNow}`;
-    }
-    let minutesNow = date.getMinutes();
-    if (minutesNow < 10) {
-        minutesNow = `0${minutesNow}`;
-    }
+   
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let months = [
         "Jan",
@@ -29,7 +22,7 @@ function formatDate(timestamp) {
     let monthNow = months[date.getMonth()];
     let dateNow = date.getDate();
 
-    return `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${hourNow}:${minutesNow}H`;
+    return `${dayNow}, ${monthNow} ${dateNow}, ${yearNow} - ${formatHours(timestamp)}h`;
 }
 
 function formatHours(timestamp) {
@@ -78,7 +71,7 @@ function showDailyForecast(response) {
         console.log(forecast);
         forecastElement.innerHTML += 
         `<div id=daily class="day col-2">
-          <p id= timeDaily><strong>${formatHours(forecast.dt * 1000)}h</strong></p>
+          <p id= timeDaily><strong>${formatHours(forecast.dt * 1000)}</strong></p>
              <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon
             }@2x.png"/>
          <p>${Math.round(forecast.main.temp_min)}<strong>/${Math.round(forecast.main.temp_max)}°</strong></p>
